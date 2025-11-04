@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | SS Infotech</title>
+  <style>
+    /* ========== BASIC RESET ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      color: white;
+      background: #000;
+    }
+
+    /* ========== NAVIGATION BAR ========== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #08d4fc;
+    }
+
+    .login-btn {
+      background: #08d4fc;
+      color: #000;
+      padding: 8px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .login-btn:hover {
+      background: #ffd633;
+    }
+/* ========== HERO SECTION ========== */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1920&q=80')
+    no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative; /* important for overlay */
+}
+
+/* overlay effect */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffcc00;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #f1f1f1;
+  margin-bottom: 30px;
+}
+
+.hero .cta-btn {
+  background: #08d4fc;
+  color: #000;
+  padding: 12px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.hero .cta-btn:hover {
+  background: #ffd633;
+}
+
+/* ========== FLIP CARD SECTION ========== */
+.cards-section {
+  background: #111;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.cards-section h2 {
+  font-size: 2.2rem;
+  color: #ffcc00;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+.card {
+  width: 260px;
+  height: 320px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Card Faces */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  border: 2px solid #08d4fc;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card-front {
+  background: #000;
+  color: #fff;
+}
+
+.card-front .icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.card-front h3 {
+  font-size: 1.2rem;
+  color: #ffcc00;
+  font-weight: 600;
+  text-align: center;
+}
+
+.card-back {
+  background: #1a1a1a;
+  color: #f1f1f1;
+  transform: rotateY(180deg);
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ========== ABOUT BYTERA SECTION ========== */
+.about-bytera {
+  background: linear-gradient(to right, #0b0b0b, #1a1a1a);
+  padding: 80px 60px;
+  color: #f1f1f1;
+  text-align: center;
+  border-top: 2px solid #ffcc00;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-bytera h2 {
+  font-size: 2.2rem;
+  color: #ffcc00;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.about-bytera p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+  text-align: justify;
+}
+
+.about-bytera strong {
+  color: #08d4fc;
+}
+
+/* ========== DEGREE CARDS SECTION ========== */
+.degree-section {
+  background: #0f0f0f;
+  padding: 80px 60px;
+  text-align: center;
+  color: #fff;
+  border-top: 2px solid #ffcc00;
+}
+
+.degree-section h2 {
+  font-size: 2.2rem;
+  color: #ffcc00;
+  margin-bottom: 50px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.degree-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+.degree-card {
+  background: #1a1a1a;
+  border: 2px solid #ffcc00;
+  border-radius: 15px;
+  width: 260px;
+  padding: 30px 20px;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.15);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.degree-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
+}
+
+.degree-card h3 {
+  color: #ffcc00;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ffcc00;
+  padding-bottom: 10px;
+}
+
+.degree-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.degree-card ul li {
+  padding: 8px 0;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f1f1f1;
+}
+
+.degree-card ul li:last-child {
+  border-bottom: none;
+}
+
+/* ========== VIDEO & FEATURES SECTION ========== */
+.video-feature-section {
+  background: #0b0b0b;
+  padding: 80px 60px;
+  text-align: center;
+  border-top: 2px solid #ffcc00;
+  color: #fff;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  aspect-ratio: 16/9;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 3px solid #ffcc00;
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.video-feature-section h2 {
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-bottom: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+.feature {
+  background: #1a1a1a;
+  border: 2px solid #ffcc00;
+  border-radius: 15px;
+  padding: 12px 20px;
+  width: fit-content;
+  white-space: nowrap; /* 🔥 keeps text on one line */
+  font-size: 1rem;
+  color: #e0e0e0;
+  transition: transform 0.4s, box-shadow 0.4s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.15);
+  margin: 10px auto;
+}
+
+
+
+.feature:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+}
+
+.feature span {
+  font-size: 1.5rem;
+  color: #ffcc00;
+}
+.features-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ========== CLIENTS SECTION ========== */
+.clients-section {
+  background: #0f0f0f;
+  padding: 80px 20px;
+  text-align: center;
+  border-top: 2px solid #ffcc00;
+  overflow: hidden;
+}
+
+.clients-section h2 {
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.slider {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(250px * 12); /* number of slides * width */
+  animation: scroll 25s linear infinite;
+}
+
+.slide {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: 150px;
+  height: auto;
+  filter: brightness(0.8);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.slide img:hover {
+  transform: scale(1.1);
+  filter: brightness(1);
+}
+
+/* Animation for moving right to left */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========== TEAM SECTION ========== */
+.team-section {
+  background: #0f0f0f;
+  color: #fff;
+  padding: 80px 40px;
+  text-align: center;
+  border-top: 2px solid #ffcc00;
+}
+
+.team-section h2 {
+  font-size: 2.2rem;
+  color: #ffcc00;
+  margin-bottom: 60px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+.team-card {
+  background: #1a1a1a;
+  border: 2px solid #ffcc00;
+  border-radius: 20px;
+  padding: 25px 20px;
+  max-width: 270px;
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.15);
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
+}
+
+.team-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #ffcc00;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.team-card h3 {
+  color: #ffcc00;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.team-card h4 {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.team-card p {
+  font-size: 0.9rem;
+  color: #ddd;
+  line-height: 1.4;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">SS INFOTECH</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Internship</a>
+      <a href="#">Training</a>
+      <a href="#">Contact</a>
+      <a href="#" class="login-btn">Login</a>
+    </div>
+  </nav>
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Empowering Students Through Internship & Training</h1>
+    <p>Gain real-world experience and practical skills with our hands-on programs designed for growth and success.</p>
+    <a href="#" class="cta-btn">Explore Opportunities</a>
+  </div>
+</section>
+
+
+<!-- TRAINING & INTERNSHIP FIELDS -->
+<section class="cards-section">
+  <h2>Our Internship & Training Programs</h2>
+  <div class="card-container">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon">💻</div>
+          <h3>Web Development</h3>
+        </div>
+        <div class="card-back">
+          <p>Learn front-end and back-end development using HTML, CSS, JavaScript, and modern frameworks like React and Node.js. Build real-world projects with our mentors.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon">📱</div>
+          <h3>Mobile App Development</h3>
+        </div>
+        <div class="card-back">
+          <p>Master Android & iOS app development using Flutter, Kotlin, and React Native. Get hands-on practice developing real applications.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon">🌐</div>
+          <h3>Digital Marketing</h3>
+        </div>
+        <div class="card-back">
+          <p>Learn SEO, SEM, and social media marketing strategies to grow digital presence. Our courses are industry-oriented and project-based.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon">⚙️</div>
+          <h3>Bytera Techede Training</h3>
+        </div>
+        <div class="card-back">
+          <p>Advanced corporate-level training with latest tools and technologies to boost your career readiness and technical expertise.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon">💾</div>
+          <h3>Software Development</h3>
+        </div>
+        <div class="card-back">
+          <p>Work on real-time projects using Java, Python, C++, and databases. Learn software lifecycle management through practical sessions.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT BYTERA TECHede SECTION -->
+<section class="about-bytera">
+  <div class="about-container">
+    <h2>About Bytera Techede Pvt. Ltd.</h2>
+    <p>
+      <strong>Bytera Techede Pvt. Ltd.</strong> offers internship opportunities for
+      <strong>Polytechnic, BE, B.Tech, M.Tech, and MCA</strong> students, providing them with
+      valuable exposure to real-world work environments through hands-on experience on live projects.
+    </p>
+    <p>
+      The primary objective of the <strong>Bytera Techede Internship Program</strong> is to help
+      engineering graduates enhance their technical and professional skills, thereby improving their
+      employability and aligning their capabilities with industry standards.
+    </p>
+    <p>
+      This program emphasizes <strong>practical, industry-based learning</strong>, enabling students
+      to gain meaningful experience that bridges the gap between academic knowledge and workplace application.
+    </p>
+  </div>
+</section>
+
+<!-- COURSES BY DEGREE SECTION -->
+<section class="degree-section">
+  <h2>Programs Offered by Degree</h2>
+  <div class="degree-container">
+
+    <!-- Card 1 -->
+    <div class="degree-card">
+      <h3>BE</h3>
+      <ul>
+        <li>Web Development (PHP, React)</li>
+        <li>Software Development</li>
+        <li>Data Science Basics</li>
+        <li>Machine Learning Projects</li>
+      </ul>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="degree-card">
+      <h3>B.Tech</h3>
+      <ul>
+        <li>Python & Django Development</li>
+        <li>Android App Development</li>
+        <li>Full-Stack JavaScript</li>
+        <li>Digital Marketing</li>
+      </ul>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="degree-card">
+      <h3>Polytechnic</h3>
+      <ul>
+        <li>Basic Web Design (HTML, CSS, JS)</li>
+        <li>Hardware & Networking Training</li>
+        <li>Mini Project Development</li>
+        <li>Software Testing Introduction</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+<!-- VIDEO AND FEATURES SECTION -->
+<section class="video-feature-section">
+  <div class="video-container">
+    <iframe
+      src="https://youtu.be/tWCaFVJMUi8?si=f6uC3oVS8jNroivj"
+      title="Bytera Training Introduction"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <h2>Key Features of Our Internship & Training Program</h2>
+
+  <div class="features-container">
+    <div class="feature"><span>💼</span> Industry-Based Live Projects</div>
+    <div class="feature"><span>👨‍🏫</span> Expert-Led Mentorship & Guidance</div>
+    <div class="feature"><span>🧠</span> Hands-On Practical Learning</div>
+    <div class="feature"><span>📈</span> Skill Development for Employability</div>
+    <div class="feature"><span>🌍</span> Real-World Work Environment</div>
+    <div class="feature"><span>🤝</span> Career Counseling & Placement Support</div>
+    <div class="feature"><span>📚</span> Flexible Course Modules</div>
+    <div class="feature"><span>💻</span> Latest Tools & Technologies</div>
+    <div class="feature"><span>🏆</span> Certification upon Completion</div>
+    <div class="feature"><span>🚀</span> Personal & Professional Growth</div>
+  </div>
+</section>
+
+<!-- CLIENTS SECTION -->
+<section class="clients-section">
+  <h2>Our Clients & Partners</h2>
+  <div class="slider">
+    <div class="slide-track">
+      <!-- Add client logos here -->
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+1" alt="Client 1"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+2" alt="Client 2"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+3" alt="Client 3"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+4" alt="Client 4"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+5" alt="Client 5"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+6" alt="Client 6"></div>
+
+      <!-- Duplicate for infinite loop -->
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+1" alt="Client 1"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+2" alt="Client 2"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+3" alt="Client 3"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+4" alt="Client 4"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+5" alt="Client 5"></div>
+      <div class="slide"><img src="https://via.placeholder.com/150x80?text=Client+6" alt="Client 6"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="team-section">
+  <h2>Our Expert Mentors & Trainers</h2>
+  <div class="team-container">
+
+    <!-- Member 1 -->
+    <div class="team-card">
+      <img src="https://via.placeholder.com/150" alt="Prof. A">
+      <h3>Prof. A Sharma</h3>
+      <h4>Web Development</h4>
+      <p>Expert in front-end and back-end technologies with over 8 years of teaching and project guidance experience.</p>
+    </div>
+
+    <!-- Member 2 -->
+    <div class="team-card">
+      <img src="https://via.placeholder.com/150" alt="Prof. B">
+      <h3>Prof. B Iyer</h3>
+      <h4>Mobile App Development</h4>
+      <p>Specialist in Android and Flutter app development, guiding students to build practical, industry-level projects.</p>
+    </div>
+
+    <!-- Member 3 -->
+    <div class="team-card">
+      <img src="https://via.placeholder.com/150" alt="Prof. C">
+      <h3>Prof. C Deshmukh</h3>
+      <h4>Software Engineering</h4>
+      <p>Focused on software design and Agile development practices to help students write professional-grade code.</p>
+    </div>
+
+    <!-- Member 4 -->
+    <div class="team-card">
+      <img src="https://via.placeholder.com/150" alt="Prof. D">
+      <h3>Prof. D Patel</h3>
+      <h4>Data Science & ML</h4>
+      <p>Mentors students in Python, data analysis, and AI with a focus on real-world applications and live datasets.</p>
+    </div>
+
+    <!-- Member 5 -->
+    <div class="team-card">
+      <img src="https://via.placeholder.com/150" alt="Prof. E">
+      <h3>Prof. E Khan</h3>
+      <h4>Digital Marketing</h4>
+      <p>Helps students master SEO, SEM, and social media marketing through practical projects and analytics tools.</p>
+    </div>
+
+    <!-- Member 6 -->
+    <div class="team-card">
+      <img src="https://via.placeholder.com/150" alt="Prof. F">
+      <h3>Prof. F Mehta</h3>
+      <h4>Project Development</h4>
+      <p>Guides students through full project lifecycles from idea to deployment using modern development workflows.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+</body>
+</html>
